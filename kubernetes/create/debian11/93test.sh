@@ -8,7 +8,7 @@ apt install -y vim git sudo
 usermod -aG sudo ${SUDO_USER}
 
 ./91static-ip.sh enp0s8 192.168.56.150
-./master.sh
+./master.sh > ./log.sh
 ./92taint-control-plane.sh
 ./41kubectl-root.sh
 
