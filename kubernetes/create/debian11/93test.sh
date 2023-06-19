@@ -9,7 +9,10 @@ usermod -aG sudo ${SUDO_USER}
 
 ./91static-ip.sh enp0s8 192.168.56.150
 ./master.sh
+./92taint-control-plane.sh
+./41kubectl-root.sh
 
+# test
 cat <<EOF | tee /tmp/demo.yml
 apiVersion: v1
 kind: Pod 
