@@ -9,40 +9,9 @@ usermod -aG sudo ${SUDO_USER}
 
 ./91static-ip.sh enp0s8 192.168.56.150
 ./master.sh > ./log.sh
-./92taint-control-plane.sh
 ./41kubectl-root.sh
 
 # test
-cat <<EOF | tee /tmp/demo.yml
-apiVersion: v1
-kind: Pod 
-metadata:
-  name: kubernetes-demo-pod
-  labels:
-    app: demoApp
-spec:
-  containers:
-    - name: kubernetes-demo-container
-      image: hcwxd/kubernetes-demo
-      ports:
-        - containerPort: 3000
-EOF
-
-cat <<EOF | tee /tmp/serv.yml
-apiVersion: v1
-kind: Service
-metadata:
-  name: my-service
-spec:
-  selector:
-    app: demoApp
-  type: NodePort
-  ports:
-    - protocol: TCP 
-      port: 3001
-      targetPort: 3000
-      nodePort: 30390
-EOF
-
-kubectl apply -f /tmp/demo.yml
-kubectl apply -f /tmp/serv.yml
+./92taint-control-plane.sh
+kubectl apply -f ./yml/demo.yml
+kubectl apply -f ./yml/service.yml
