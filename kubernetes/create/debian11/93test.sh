@@ -2,7 +2,7 @@
 # todo ip table
 sed -i 's/^deb cdrom/# deb cdrom/' /etc/apt/sources.list
 chmod a+x ./*.sh
-apt install -y vim git sudo 
+apt-get install -y vim git sudo 
 
 
 ./91static-ip.sh enp0s8 192.168.56.150
