@@ -9,7 +9,7 @@ sysctl --system
 
 kubeadm init --pod-network-cidr=${CIDR}/16 --cri-socket=${CRI_SOCKET}
 
-KUBECONFIG=/etc/kubernetes/admin.conf
+export KUBECONFIG=/etc/kubernetes/admin.conf
 
 curl -sL https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml | \
     sed 's/10\.244\.0\.0/$CIDR/g' > /tmp/flannel.yml
