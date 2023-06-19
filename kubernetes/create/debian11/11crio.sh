@@ -4,7 +4,7 @@ VERSION=1.27
 
 # Container Runtime (CRI-O)
 # Forwarding IPv4 and letting iptables
-cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+cat <<EOF | tee /etc/modules-load.d/k8s.conf
 overlay
 br_netfilter
 EOF
