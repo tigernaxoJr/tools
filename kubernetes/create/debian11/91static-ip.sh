@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat <<EOF | tee /etc/network/interfaces
+cat <<EOF >> /etc/network/interfaces
 # ${1}
 allow-hotplug ${1}
 iface ${1} inet static
