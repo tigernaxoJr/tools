@@ -12,9 +12,7 @@ apt-get install -y vim git sudo
 # give kubectl privileges to the sudo user
 SUDO_USER="naxo"
 usermod -aG sudo ${SUDO_USER}
-cp ./41kubectl-config-non-root.sh /tmp/kubectl-config.sh 
-chmod a+s /tmp/kubectl-config.sh
-su - ${SUDO_USER} -c "bash /tmp/kubectl-config.sh"
+./40kubectl-config.sh ${SUDO_USER}
 
 # test
 ./92taint-control-plane.sh
