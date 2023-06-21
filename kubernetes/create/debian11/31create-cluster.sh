@@ -7,11 +7,14 @@ net.ipv4.ip_forward                 = 1
 EOF
 sysctl --system
 
+rm -rf /etc/cni/net.d/
 kubeadm init --pod-network-cidr=${CIDR}/16 --cri-socket=${CRI_SOCKET} --control-plane-endpoint="${ENDPOINT}"
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
-curl -sL https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml | \
-    sed 's/10\.244\.0\.0/$CIDR/g' > /tmp/flannel.yml
+#curl -sL https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml | \
+#    sed 's/10\.244\.0\.0/$CIDR/g' > /tmp/flannel.yml
+#kubectl apply -f /tmp/flannel.yml
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
-kubectl apply -f /tmp/flannel.yml
+systemctl restart crio
