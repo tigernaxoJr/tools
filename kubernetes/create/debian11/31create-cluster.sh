@@ -7,7 +7,7 @@ net.ipv4.ip_forward                 = 1
 EOF
 sysctl --system
 
-kubeadm init --pod-network-cidr=${CIDR}/16 --cri-socket=${CRI_SOCKET}
+kubeadm init --pod-network-cidr=${CIDR}/16 --cri-socket=${CRI_SOCKET} --control-plane-endpoint="${ENDPOINT}"
 
 export KUBECONFIG=/etc/kubernetes/admin.conf
 

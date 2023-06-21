@@ -1,5 +1,7 @@
 #!/bin/bash
 # todo ip table
+export ENDPOINT="192.168.56.150"
+
 sed -i 's/^deb cdrom/# deb cdrom/' /etc/apt/sources.list
 chmod a+x ./*.sh
 apt-get install -y vim git sudo 
